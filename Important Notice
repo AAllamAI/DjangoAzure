@@ -1,6 +1,17 @@
 App Service -> Configuration -> Stack Settings [startup command].Apply
 gunicorn --bind=0.0.0.0 --timeout 600 taskmanager.wsgi:application 
 
-
+---------------------
 App Service -> Environment variable "application settings before" -> New -> Name: SCM_DO_BUILD_DURING_DEPLOYMENT
 Value: true
+
+-----------------------
+
+App Service -> Log stream {To see error message}
+
+------------------------
+من Azure Portal → افتح App Service بتاعك → من القائمة الجانبية دور على "SSH" (تحت قسم Development Tools). دوس عليها وهيفتحلك تيرمينال شغال جوه السيرفر نفسه مباشرة من المتصفح، من غير ما تحتاج تثبت أي حاجة.
+
+cd /home/site/wwwroot
+source antenv/bin/activate
+python manage.py migrate
