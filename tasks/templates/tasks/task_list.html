@@ -1,0 +1,57 @@
+{% extends "tasks/base.html" %}
+
+{% block title %}المهام{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-2">
+    <div>
+        <h1 class="h3 mb-1">مهامي</h1>
+        <div class="text-muted small">
+            الإجمالي: {{ total_count }}
+            &middot; مكتملة: {{ completed_count }}
+            &middot; متبقية: {{ pending_count }}
+        </div>
+    </div>
+    <a href="{% url 'task_create' %}" class="btn btn-primary">+ إضافة مهمة</a>
+</div>
+
+{% if tasks %}
+<div class="list-group">
+    {% for task in tasks %}
+    <div class="list-group-item task-item {% if task.is_completed %}task-completed{% endif %}">
+        <div class="d-flex align-items-start gap-3">
+            <form action="{% url 'task_toggle' task.pk %}" method="post" class="mt-1">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-sm btn-outline-success rounded-circle toggle-btn"
+                        title="{% if task.is_completed %}إلغاء الإكمال{% else %}تعليم كمكتمل{% endif %}">
+                    {% if task.is_completed %}✓{% else %}○{% endif %}
+                </button>
+            </form>
+
+            <div class="flex-grow-1">
+                <div class="task-title">{{ task.title }}</div>
+                {% if task.description %}
+                    <div class="text-muted small task-desc">{{ task.description }}</div>
+                {% endif %}
+                <div class="text-muted small mt-1">أُنشئت في {{ task.created_at|date:"Y-m-d H:i" }}</div>
+            </div>
+
+            <div class="d-flex gap-2">
+                <a href="{% url 'task_update' task.pk %}" class="btn btn-sm btn-outline-secondary">تعديل</a>
+                <form action="{% url 'task_delete' task.pk %}" method="post"
+                      onsubmit="return confirm('هل أنت متأكد من حذف هذه المهمة؟');">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-sm btn-outline-danger">حذف</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% else %}
+<div class="text-center py-5 text-muted">
+    <p class="fs-5">لا توجد مهام بعد</p>
+    <a href="{% url 'task_create' %}" class="btn btn-primary mt-2">أضف مهمتك الأولى</a>
+</div>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,42 @@
+body {
+    background-color: #f5f6fa;
+    font-family: "Segoe UI", Tahoma, Arial, sans-serif;
+}
+
+.app-navbar {
+    background-color: #2c3e50;
+}
+
+.task-item {
+    border-radius: 10px !important;
+    margin-bottom: 10px;
+    border: 1px solid #e3e6ea !important;
+}
+
+.task-title {
+    font-weight: 600;
+    font-size: 1.05rem;
+}
+
+.task-desc {
+    margin-top: 2px;
+}
+
+.task-completed .task-title {
+    text-decoration: line-through;
+    color: #9aa0a6;
+}
+
+.task-completed {
+    background-color: #f8f9fa;
+}
+
+.toggle-btn {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    font-weight: bold;
+}
