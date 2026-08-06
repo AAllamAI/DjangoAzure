@@ -1,2 +1,6 @@
 App Service -> Configuration -> Stack Settings [startup command].Apply
 gunicorn --bind=0.0.0.0 --timeout 600 taskmanager.wsgi:application 
+
+
+App Service -> Environment variable "application settings before" -> New -> Name: SCM_DO_BUILD_DURING_DEPLOYMENT
+Value: true
