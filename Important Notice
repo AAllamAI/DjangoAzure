@@ -15,3 +15,15 @@ App Service -> Log stream {To see error message}
 cd /home/site/wwwroot
 source antenv/bin/activate
 python manage.py migrate
+
+---------------------------
+
+ِApp service -> Environment Variable -> connection string name of database engine
+---------------------------
+for amend 
+origin is the name of the remote connection
+git pull origin main
+# عدّل الملف بمحرر النصوص، واحفظ
+git add .github/workflows/azure-deploy.yml
+git commit -m "وصف التعديل"
+git push origin main
