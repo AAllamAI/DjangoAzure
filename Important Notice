@@ -1,0 +1,2 @@
+App Service -> Configuration -> Stack Settings [startup command].Apply
+gunicorn --bind=0.0.0.0 --timeout 600 taskmanager.wsgi:application 
