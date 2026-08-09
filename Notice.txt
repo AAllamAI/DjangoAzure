@@ -1,0 +1,10 @@
+GitHub Repository
+
+Settings
+
+Secrets and variables
+
+Actions
+
+
+انسخ ملف publish profile بالكامل
