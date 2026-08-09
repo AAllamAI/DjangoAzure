@@ -1,5 +1,13 @@
 App Service -> Configuration -> Stack Settings [startup command].Apply
 gunicorn --bind=0.0.0.0 --timeout 600 taskmanager.wsgi:application 
+# directory path to wsgi file %taskmanager%
+
+من Azure Portal → افتح App Service بتاعك → من القائمة الجانبية دور على "SSH" (تحت قسم Development Tools). دوس عليها وهيفتحلك تيرمينال شغال جوه السيرفر نفسه مباشرة من المتصفح، من غير ما تحتاج تثبت أي حاجة.
+python manage.py showmigrations
+python manage.py makemigrations
+python manage.py migrate
+
+database details (Pass and Engine) in settings file under database
 
 ---------------------
 App Service -> Environment variable "application settings before" -> New -> Name: SCM_DO_BUILD_DURING_DEPLOYMENT
@@ -27,3 +35,11 @@ git pull origin main
 git add .github/workflows/azure-deploy.yml
 git commit -m "وصف التعديل"
 git push origin main
+
+
+-----------------------------
+Most common cases 
+git pull origin main --rebase
+git push origin main
+-------------------------------
+
